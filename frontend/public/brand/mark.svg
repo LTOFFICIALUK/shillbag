@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="title">
+  <title id="title">SHILLBAG</title>
+  <rect width="512" height="512" rx="80" fill="#f3ead6"/>
+  <path
+    d="M168 188h176l-16 174q-13.6 20.8-27.2 0q-13.6 20.8-27.2 0q-13.6 20.8-27.2 0q-13.6 20.8-27.2 0q-13.6 20.8-27.2 0L168 188Z"
+    stroke="#12110e"
+    stroke-width="17"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M218 188c0-45 76-45 76 0"
+    stroke="#12110e"
+    stroke-width="17"
+    stroke-linecap="round"
+  />
+  <path
+    d="M220 252h76M220 284h52"
+    stroke="#12110e"
+    stroke-width="11"
+    stroke-linecap="round"
+    opacity="0.32"
+  />
+  <circle cx="370" cy="371" r="83" fill="#f3ead6" stroke="#157a4a" stroke-width="16"/>
+  <path
+    d="m336 373 24 25 51-57"
+    stroke="#157a4a"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
