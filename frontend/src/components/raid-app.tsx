@@ -443,9 +443,16 @@ export const RaidApp = () => {
               </p>
             </>
           ) : (
-            <p className="display mt-8 text-3xl">
-              Scan finished. No Solana CA in this lookback.
-            </p>
+            <>
+              <p className="display mt-8 text-3xl">
+                Scan finished. No Solana CA in this lookback.
+              </p>
+              <p className="mt-4 text-[14px] leading-6 text-mute">
+                Fresh tickers often have no mint on X yet. A bare $TICKER is
+                skipped on purpose. Drop a pump or chart link in the post, or
+                wait until X maps the cashtag.
+              </p>
+            </>
           )}
 
           {scan.posts && scan.posts.length > 0 ? (

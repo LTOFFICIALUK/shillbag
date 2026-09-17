@@ -17,7 +17,10 @@ export default function RulesPage() {
               The tweet must carry a Solana CA: X&apos;s `solana:mint` cashtag,
               a token URL, or ${TOKEN_SYMBOL}.
             </li>
-            <li>You get paid in that mint. Tickers without a CA do not pay.</li>
+            <li>
+              You get paid in that mint. Tickers without a CA do not pay — new
+              coins often have no mint bound on X yet. That skip is expected.
+            </li>
             <li>Must follow @{X_HANDLE} and hold at least $100 of ${TOKEN_SYMBOL}.</li>
             <li>Lookback, cooldown, and day cap come from your shiller rank.</li>
             <li>Same tweet never pays twice. Unpaid never reads as Paid.</li>

@@ -29,7 +29,8 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-md text-[16px] leading-7 text-faint">
               Scan your profile. We pay the Solana mint in the post, not a
-              ticker list. Pending never reads as paid.
+              ticker list. Fresh launches often have no CA on X yet — those
+              posts skip until a mint is attached. Pending never reads as paid.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/app" className="btn-primary">
@@ -121,17 +122,37 @@ export default function Home() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="eyebrow">Any Solana mint</p>
-                <h2 className="display mt-2 text-4xl">The CA you shill is the token you get.</h2>
+                <h2 className="display mt-2 max-w-2xl text-4xl">
+                  No CA on the tweet is not a miss. New coins often have none yet.
+                </h2>
               </div>
               <Link href="/coins" className="text-[13px] text-faint hover:text-slip">
                 How we read CAs
               </Link>
             </div>
-            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-faint">
-              No allowlist. If X binds the cashtag to Solana, we see
-              solana:&lt;mint&gt;. Pump and chart links work too. A bare $TICKER
-              with no mint is skipped so copycats do not get paid.
-            </p>
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              <p className="max-w-xl text-[15px] leading-7 text-faint">
+                X has to bind a cashtag to a mint before we see
+                solana:&lt;mint&gt;. Brand-new tokens usually show as a bare
+                $TICKER with no contract. We skip those on purpose so the twenty
+                copycats of the same name do not get paid. That is the product
+                working, not an unpaid shill.
+              </p>
+              <ul className="space-y-3 text-[14px] leading-6 text-faint">
+                <li>
+                  Pays: X maps the cashtag to Solana, or the post has a
+                  pump.fun, axiom, dexscreener, birdeye, or solscan token link.
+                </li>
+                <li>
+                  Does not pay yet: $TICKER only. Drop the chart or pump link in
+                  the same post until X attaches the mint.
+                </li>
+                <li>
+                  Receipts only say Paid after the SPL transfer. A skip is not a
+                  pending payout.
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
