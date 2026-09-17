@@ -1,0 +1,20 @@
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: shillbag
+      POSTGRES_PASSWORD: shillbag
+      POSTGRES_DB: shillbag
+    ports:
+      - "5433:5432"
+    volumes:
+      - shillbag_pg:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shillbag -d shillbag"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  shillbag_pg:

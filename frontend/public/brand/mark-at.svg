@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="title">
+  <title id="title">SHILLBAG at-pay mark</title>
+  <rect width="512" height="512" fill="#05030a"/>
+  <g transform="translate(256 256) skewX(-8) translate(-256 -256)">
+    <path
+      fill="#fff6ea"
+      fill-rule="evenodd"
+      d="M256 72c102 0 184 82 184 184 0 58-28 110-72 144v-76c0-22-18-40-40-40h-8c-14 34-48 56-86 56-62 0-112-50-112-112s50-112 112-112c38 0 72 18 92 48h-40c-14 0-26 12-26 26v174c22 10 46 16 72 16 80 0 144-64 144-144S336 72 256 72Zm0 112c-40 0-72 32-72 72s32 72 72 72 72-32 72-72-32-72-72-72Z"
+    />
+    <path
+      fill="none"
+      stroke="#05030a"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="22"
+      d="M256 212c24 0 44 20 44 44s-20 44-44 44-44-20-44-44 20-44 44-44Z"
+    />
+    <path
+      fill="none"
+      stroke="#05030a"
+      stroke-linecap="round"
+      stroke-width="22"
+      d="M300 256v96c0 28 22 52 52 52"
+    />
+  </g>
+</svg>

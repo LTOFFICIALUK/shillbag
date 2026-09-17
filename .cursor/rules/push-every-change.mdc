@@ -1,0 +1,10 @@
+---
+description: Commit and push to GitHub after every change in this repo.
+alwaysApply: true
+---
+
+# Push every change
+
+After any code or content change in this repo, create a git commit and `git push` to the remote in the same turn. Do not wait to be asked.
+
+Use author `Luke Carter <everythingsimpleinc1@gmail.com>` via env vars on the commit. Never skip hooks. Never commit `.env`, `.env.local`, or secrets.

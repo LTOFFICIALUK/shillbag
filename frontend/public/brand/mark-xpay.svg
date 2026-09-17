@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="title">
+  <title id="title">SHILLBAG X-pay mark</title>
+  <rect width="512" height="512" fill="#05030a"/>
+  <g transform="translate(256 256) skewX(-10) translate(-256 -256)">
+    <path
+      fill="#fff6ea"
+      d="M148 92h86l54 78 54-78h86l-90 128 98 140h-90l-60-86-60 86h-90l98-140-86-128Zm116 148-8 12 8-12Z"
+    />
+    <path
+      fill="none"
+      stroke="#05030a"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="22"
+      d="M186 128 326 384M326 128 186 384"
+    />
+    <path
+      fill="#fff6ea"
+      d="M168 236h176v40H168z"
+    />
+    <path
+      fill="none"
+      stroke="#05030a"
+      stroke-linecap="square"
+      stroke-width="14"
+      d="M184 256h144"
+    />
+  </g>
+</svg>
