@@ -1,8 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { PAYABLE_ASSETS } from "./memes";
-import { readHoldings } from "./chain";
 import { TOKEN_ADDRESS, TOKEN_SYMBOL, X_HANDLE, ADMIN_EMAIL } from "./config";
+import { readHoldings } from "./chain";
 import { treasuryReady } from "./payout";
 import { isSolanaAddress, walletKey } from "./wallet";
 import { runScan } from "./scan";
@@ -74,12 +73,7 @@ app.get("/api/config", (c) =>
       ...tier,
       bagbackPercent: bagbackPercent(tier),
     })),
-    assets: PAYABLE_ASSETS.map((asset) => ({
-      symbol: asset.symbol,
-      name: asset.name,
-      kind: asset.kind,
-      mint: asset.mint ?? null,
-    })),
+    assets: [],
   }),
 );
 

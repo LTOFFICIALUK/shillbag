@@ -13,8 +13,11 @@ export default function RulesPage() {
         <Receipt className="mt-8">
           <ul className="space-y-4 text-[15px] leading-7 text-mute">
             <li>Original posts only. Retweets are not payable.</li>
-            <li>Must tag a listed memecoin, like $BONK or ${TOKEN_SYMBOL}.</li>
-            <li>You get paid in that coin, split across tickers on the same post.</li>
+            <li>
+              The tweet must carry a Solana CA: X&apos;s `solana:mint` cashtag,
+              a token URL, or ${TOKEN_SYMBOL}.
+            </li>
+            <li>You get paid in that mint. Tickers without a CA do not pay.</li>
             <li>Must follow @{X_HANDLE} and hold at least $100 of ${TOKEN_SYMBOL}.</li>
             <li>Lookback, cooldown, and day cap come from your shiller rank.</li>
             <li>Same tweet never pays twice. Unpaid never reads as Paid.</li>

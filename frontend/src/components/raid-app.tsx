@@ -444,7 +444,7 @@ export const RaidApp = () => {
             </>
           ) : (
             <p className="display mt-8 text-3xl">
-              Scan finished. No payable $tickers in this lookback.
+              Scan finished. No Solana CA in this lookback.
             </p>
           )}
 

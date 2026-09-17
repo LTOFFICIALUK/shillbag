@@ -1,4 +1,4 @@
-import { payableCashtags } from "./memes";
+import { resolveTweetAssets } from "./tokens";
 import { TOKEN_SYMBOL, X_HANDLE, X_USER_ID } from "./config";
 import { sendClaimTokens } from "./payout";
 import { scorePost, type ScoredPost } from "./scoring";
@@ -265,7 +265,8 @@ export const runScan = async (input: {
       continue;
     }
 
-    if (payableCashtags(tweet.text).length === 0) continue;
+    const assets = await resolveTweetAssets(tweet.text, tweet.urls ?? []);
+    if (assets.length === 0) continue;
 
     const scored = scorePost({
       tweetId: tweet.tweet_id,
@@ -275,6 +276,7 @@ export const runScan = async (input: {
       isRetweet: Boolean(tweet.is_retweet),
       tier: input.tier,
       remainingDailyUsd: remaining,
+      assets,
     });
 
     if (scored.skipped || scored.payoutUsd <= 0) {
@@ -296,6 +298,8 @@ export const runScan = async (input: {
       payoutUsd: scored.payoutUsd,
       assets: scored.lines.map((line) => ({
         symbol: line.asset.symbol,
+        mint: line.asset.mint,
+        decimals: line.asset.decimals,
         payoutUsd: line.payoutUsd,
       })),
       claimedAt: new Date().toISOString(),

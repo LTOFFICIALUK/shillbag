@@ -27,7 +27,7 @@ export type ClaimRecord = {
   address: string;
   username: string;
   payoutUsd: number;
-  assets: { symbol: string; payoutUsd: number }[];
+  assets: { symbol: string; mint?: string; decimals?: number; payoutUsd: number }[];
   claimedAt: string;
   status: "reserved" | "sent" | "skipped";
   txSignature?: string | null;

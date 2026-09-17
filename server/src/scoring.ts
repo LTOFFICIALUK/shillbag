@@ -1,5 +1,4 @@
-import type { PayableAsset } from "./memes";
-import { payableCashtags } from "./memes";
+import type { PayableAsset } from "./tokens";
 import { bagbackPercent, type Tier } from "./tiers";
 
 export const LIKE_USD = 0.02;
@@ -47,14 +46,15 @@ export const scorePost = (input: {
   isRetweet: boolean;
   tier: Tier;
   remainingDailyUsd: number;
+  assets: PayableAsset[];
 }): ScoredPost => {
-  const assets = payableCashtags(input.text);
+  const assets = input.assets;
 
   if (input.isRetweet) {
     return emptyScore(input, "Retweets are not eligible.");
   }
   if (assets.length === 0) {
-    return emptyScore(input, "No payable ticker.");
+    return emptyScore(input, "No Solana CA in this post.");
   }
 
   const raw = engagementNotionalUsd(input.engagement);

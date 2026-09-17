@@ -13,10 +13,9 @@ import {
   VersionedTransaction,
 } from "@solana/web3.js";
 import bs58 from "bs58";
-import { PAYABLE_BY_SYMBOL, type PayableAsset } from "./memes";
-import { connection, tokenPriceUsd } from "./chain";
+import { resolveMint } from "./tokens";
+import { connection } from "./chain";
 import {
-  TOKEN_ADDRESS,
   TOKEN_DECIMALS,
   TREASURY_ADDRESS,
   TREASURY_SECRET_KEY,
@@ -55,34 +54,30 @@ const mintProgramId = async (mint: PublicKey) => {
   throw new Error(`Mint ${mint.toBase58()} is not an SPL token.`);
 };
 
-export const assetPriceUsd = async (asset: PayableAsset) => {
-  const cacheKey = asset.mint ?? asset.symbol;
-  const cached = priceCache.get(cacheKey);
+const mintPriceUsd = async (mint: string) => {
+  const cached = priceCache.get(mint);
   if (cached && Date.now() - cached.at < 60_000) return cached.value;
-
-  if (asset.mint) {
-    try {
-      const response = await fetch(
-        `https://api.dexscreener.com/latest/dex/tokens/${asset.mint}`,
-        { cache: "no-store" },
-      );
-      if (response.ok) {
-        const data = (await response.json()) as {
-          pairs?: { priceUsd?: string }[];
-        };
-        const priced = data.pairs
-          ?.map((pair) => Number(pair.priceUsd))
-          .find((price) => Number.isFinite(price) && price > 0);
-        if (priced) {
-          priceCache.set(cacheKey, { value: priced, at: Date.now() });
-          return priced;
-        }
+  try {
+    const response = await fetch(
+      `https://api.dexscreener.com/latest/dex/tokens/${mint}`,
+      { cache: "no-store" },
+    );
+    if (response.ok) {
+      const data = (await response.json()) as {
+        pairs?: { chainId?: string; priceUsd?: string }[];
+      };
+      const priced = data.pairs
+        ?.filter((pair) => pair.chainId === "solana")
+        .map((pair) => Number(pair.priceUsd))
+        .find((price) => Number.isFinite(price) && price > 0);
+      if (priced) {
+        priceCache.set(mint, { value: priced, at: Date.now() });
+        return priced;
       }
-    } catch {
-      // fall through
     }
+  } catch {
+    // fall through
   }
-  if (asset.kind === "token") return tokenPriceUsd();
   return 0;
 };
 
@@ -126,14 +121,11 @@ export const sendClaimTokens = async (
 
   try {
     for (const line of claim.assets) {
-      const asset = PAYABLE_BY_SYMBOL.get(line.symbol.toUpperCase());
-      const mintAddress =
-        asset?.mint ??
-        (asset?.kind === "token" ? TOKEN_ADDRESS : undefined);
-      if (!asset || !mintAddress) continue;
-
-      const priceUsd = await assetPriceUsd(asset);
-      const decimals = asset.decimals ?? TOKEN_DECIMALS;
+      const mintAddress = line.mint;
+      if (!mintAddress) continue;
+      const resolved = await resolveMint(mintAddress);
+      const decimals = line.decimals ?? resolved?.decimals ?? TOKEN_DECIMALS;
+      const priceUsd = await mintPriceUsd(mintAddress);
       const amount = tokenRawAmount(line.payoutUsd, priceUsd, decimals);
       if (amount <= 0n) continue;
 

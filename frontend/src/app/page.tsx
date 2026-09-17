@@ -6,19 +6,6 @@ import { SiteNav } from "@/components/site-nav";
 import { TOKEN_ADDRESS, TOKEN_SYMBOL } from "@/lib/config";
 import { TIERS, bagbackPercent } from "@/lib/tiers";
 
-const coins = [
-  "BONK",
-  "WIF",
-  "POPCAT",
-  "FARTCOIN",
-  "PENGU",
-  "TRUMP",
-  "MEW",
-  "PNUT",
-  "GOAT",
-  TOKEN_SYMBOL.toUpperCase(),
-];
-
 const payments = [
   { usd: "$2.14", ticker: "BONK", who: "7nK2…pQ4x", time: "2m" },
   { usd: "$1.08", ticker: "WIF", who: "9fLm…3bR7", time: "6m" },
@@ -41,8 +28,8 @@ export default function Home() {
               Get paid in it.
             </h1>
             <p className="mt-6 max-w-md text-[16px] leading-7 text-faint">
-              Scan your profile. Original posts that tag a memecoin print a
-              receipt in that coin. Pending never reads as paid.
+              Scan your profile. We pay the Solana mint in the post, not a
+              ticker list. Pending never reads as paid.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/app" className="btn-primary">
@@ -133,23 +120,18 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-4">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">Payable tickers</p>
-                <h2 className="display mt-2 text-4xl">The coin you tag is the coin you get.</h2>
+                <p className="eyebrow">Any Solana mint</p>
+                <h2 className="display mt-2 text-4xl">The CA you shill is the token you get.</h2>
               </div>
               <Link href="/coins" className="text-[13px] text-faint hover:text-slip">
-                See every coin
+                How we read CAs
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {coins.map((coin) => (
-                <span
-                  key={coin}
-                  className="border border-white/10 px-3 py-1.5 font-mono text-[12px] text-slip"
-                >
-                  ${coin}
-                </span>
-              ))}
-            </div>
+            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-faint">
+              No allowlist. If X binds the cashtag to Solana, we see
+              solana:&lt;mint&gt;. Pump and chart links work too. A bare $TICKER
+              with no mint is skipped so copycats do not get paid.
+            </p>
           </div>
         </section>
 

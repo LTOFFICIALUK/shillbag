@@ -8,10 +8,10 @@ export const demoTweets = (username: string, cutoff: number): TwtTweet[] => {
 
   const tweets: TwtTweet[] = [
     {
-      tweet_id: `demo-${username}-bonk`,
+      tweet_id: `demo-${username}-solcat`,
       user_id: "demo",
       username,
-      text: `$BONK still printing. Dogs run this chain.`,
+      text: `now lets see what happens with solana:9U1f18idDeySFnYrurxqT1f5n5nE4g4Uk5LLzP69bh1`,
       created_at: within(1.5),
       reply_count: 31,
       retweet_count: 18,
@@ -20,10 +20,13 @@ export const demoTweets = (username: string, cutoff: number): TwtTweet[] => {
       is_retweet: false,
     },
     {
-      tweet_id: `demo-${username}-wif`,
+      tweet_id: `demo-${username}-pump`,
       user_id: "demo",
       username,
-      text: `Hat stays on. $WIF is the only chart I respect.`,
+      text: `cooked https://pump.fun/coin/9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump`,
+      urls: [
+        "https://pump.fun/coin/9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+      ],
       created_at: within(3),
       reply_count: 12,
       retweet_count: 9,
@@ -35,7 +38,7 @@ export const demoTweets = (username: string, cutoff: number): TwtTweet[] => {
       tweet_id: `demo-${username}-token`,
       user_id: "demo",
       username,
-      text: `Shilled $${TOKEN_SYMBOL} into the void. Catch the bag.`,
+      text: `Shilled $${TOKEN_SYMBOL} into the void.`,
       created_at: within(5),
       reply_count: 7,
       retweet_count: 22,

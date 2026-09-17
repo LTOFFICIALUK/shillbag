@@ -23,6 +23,7 @@ export type TwtTweet = {
   is_reply?: boolean;
   is_retweet?: boolean;
   is_quote?: boolean;
+  urls?: string[];
 };
 
 type Json = Record<string, unknown>;
@@ -72,11 +73,20 @@ const tweetFromNode = (node: Json): TwtTweet | null => {
   const userId = String(
     user?.rest_id ?? legacy.user_id_str ?? result.user_id_str ?? "",
   );
+  const entities = asRecord(legacy.entities);
+  const urlNodes = Array.isArray(entities?.urls) ? entities.urls : [];
+  const urls = urlNodes
+    .map((item) => {
+      const node = asRecord(item);
+      return String(node?.expanded_url ?? node?.url ?? "");
+    })
+    .filter(Boolean);
   return {
     tweet_id: tweetId,
     user_id: userId,
     username: screenName(user),
     text,
+    urls,
     created_at: String(legacy.created_at ?? ""),
     reply_count: Number(legacy.reply_count ?? 0),
     retweet_count: Number(legacy.retweet_count ?? 0),
