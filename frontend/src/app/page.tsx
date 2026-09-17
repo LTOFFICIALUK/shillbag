@@ -30,7 +30,7 @@ export default function Home() {
             <p className="mt-6 max-w-md text-[16px] leading-7 text-faint">
               Scan your profile. We pay the Solana mint in the post, not a
               ticker list. Fresh launches often have no CA on X yet — those
-              posts skip until a mint is attached. Pending never reads as paid.
+              posts are skipped. Pending never reads as paid.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/app" className="btn-primary">
@@ -144,8 +144,7 @@ export default function Home() {
                   pump.fun, axiom, dexscreener, birdeye, or solscan token link.
                 </li>
                 <li>
-                  Does not pay yet: $TICKER only. Drop the chart or pump link in
-                  the same post until X attaches the mint.
+                  Skipped: $TICKER only, no mint. Copycats share names.
                 </li>
                 <li>
                   Receipts only say Paid after the SPL transfer. A skip is not a

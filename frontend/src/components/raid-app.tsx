@@ -449,8 +449,7 @@ export const RaidApp = () => {
               </p>
               <p className="mt-4 text-[14px] leading-6 text-mute">
                 Fresh tickers often have no mint on X yet. A bare $TICKER is
-                skipped on purpose. Drop a pump or chart link in the post, or
-                wait until X maps the cashtag.
+                skipped.
               </p>
             </>
           )}

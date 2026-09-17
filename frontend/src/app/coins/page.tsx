@@ -23,8 +23,7 @@ export default function CoinsPage() {
             <li>${TOKEN_SYMBOL} still pays in ${TOKEN_SYMBOL} when the mint is live.</li>
             <li>
               A bare $TICKER with no mint is skipped. New coins usually look like
-              this until X maps the cashtag. Paste a token URL in the post to
-              get paid sooner.
+              this.
             </li>
           </ul>
         </Receipt>
