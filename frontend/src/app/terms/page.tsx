@@ -17,7 +17,7 @@ export default function TermsPage() {
         <div className="mt-8 space-y-5 text-[14px] leading-7 text-faint">
           <p>
             SHILLBAG pays Solana memecoins for original X posts that tag a
-            listed ticker. Payouts are capped by rank and can fail if the
+            listed ticker. Payouts are capped by shiller and can fail if the
             treasury lacks that token.
           </p>
           <p>

@@ -185,7 +185,7 @@ app.post("/api/scan", async (c) => {
   if (holdings.tier.id === "none") {
     return c.json(
       {
-        error: `Bag $100 of $${TOKEN_SYMBOL} to unlock a raid. We do not read X for unranked wallets.`,
+        error: `Bag $100 of $${TOKEN_SYMBOL} to unlock a raid. We do not read X for lurkers.`,
       },
       403,
     );

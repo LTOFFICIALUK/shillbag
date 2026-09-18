@@ -10,11 +10,11 @@ export default function RanksPage() {
     <div>
       <SiteNav />
       <main className="mx-auto w-full max-w-5xl px-4 py-16">
-        <p className="eyebrow">Shiller ladder</p>
-        <h1 className="display mt-4 text-5xl text-slip sm:text-7xl">Ranks</h1>
+        <p className="eyebrow">The ladder</p>
+        <h1 className="display mt-4 text-5xl text-slip sm:text-7xl">Shillers</h1>
         <p className="mt-5 max-w-xl text-faint">
-          Dollar-priced. As ${TOKEN_SYMBOL} moves, the rung stays put. More bag,
-          longer scan, fatter bagback.
+          Dollar-priced. As ${TOKEN_SYMBOL} moves, the shiller stays put. More
+          bag, longer scan, fatter bagback.
         </p>
         <div className="mt-10 grid gap-5">
           {TIERS.map((tier) => (

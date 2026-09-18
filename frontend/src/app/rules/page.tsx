@@ -22,7 +22,7 @@ export default function RulesPage() {
               coins often have no mint bound on X yet. That skip is expected.
             </li>
             <li>Must follow @{X_HANDLE} and hold at least $100 of ${TOKEN_SYMBOL}.</li>
-            <li>Lookback, cooldown, and day cap come from your shiller rank.</li>
+            <li>Lookback, cooldown, and day cap come from your shiller.</li>
             <li>Same tweet never pays twice. Unpaid never reads as Paid.</li>
           </ul>
         </Receipt>

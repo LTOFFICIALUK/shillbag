@@ -37,7 +37,7 @@ export default function Home() {
                 Scan profile
               </Link>
               <Link href="/ranks" className="btn-ghost">
-                Shiller ranks
+                The shillers
               </Link>
             </div>
             <p className="mt-8 font-mono text-[11px] text-faint">
@@ -95,7 +95,7 @@ export default function Home() {
               {
                 n: "01",
                 t: "Size the bag",
-                d: `Phantom on Solana. We mark your $${TOKEN_SYMBOL} and park you on a shiller rank.`,
+                d: `Phantom on Solana. We mark your $${TOKEN_SYMBOL} and park you on a shiller.`,
               },
               {
                 n: "02",
@@ -157,7 +157,7 @@ export default function Home() {
 
         <section className="mx-auto w-full max-w-6xl px-4 py-20">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="display text-4xl">Shiller ranks</h2>
+            <h2 className="display text-4xl">The shillers</h2>
             <Link href="/ranks" className="text-[13px] text-faint hover:text-slip">
               Open the ladder
             </Link>
@@ -166,7 +166,7 @@ export default function Home() {
             <table className="w-full min-w-[640px] text-left text-[13px]">
               <thead>
                 <tr className="font-mono text-[11px] uppercase tracking-[0.12em] text-faint">
-                  <th className="pb-3 font-normal">Rank</th>
+                  <th className="pb-3 font-normal">Shiller</th>
                   <th className="pb-3 font-normal">Hold</th>
                   <th className="pb-3 font-normal">Lookback</th>
                   <th className="pb-3 font-normal">Bagback</th>

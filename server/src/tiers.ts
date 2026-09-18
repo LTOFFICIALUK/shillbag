@@ -34,7 +34,7 @@ export const TIERS: Tier[] = [
   },
   {
     id: "shiller",
-    name: "Shiller",
+    name: "Quote Shill",
     minHoldUsd: 500,
     bagbackBps: 200,
     dailyCapUsd: 15,
@@ -46,7 +46,7 @@ export const TIERS: Tier[] = [
   },
   {
     id: "alphacaller",
-    name: "Alpha Caller",
+    name: "Alpha Shill",
     minHoldUsd: 2_500,
     bagbackBps: 300,
     dailyCapUsd: 25,
@@ -58,7 +58,7 @@ export const TIERS: Tier[] = [
   },
   {
     id: "kol",
-    name: "KOL",
+    name: "Head Shill",
     minHoldUsd: 10_000,
     bagbackBps: 500,
     dailyCapUsd: 75,
@@ -84,7 +84,7 @@ export const TIERS: Tier[] = [
 
 export const NONE_TIER: Tier = {
   id: "none",
-  name: "Unranked",
+  name: "Lurker",
   minHoldUsd: 0,
   bagbackBps: 0,
   dailyCapUsd: 0,

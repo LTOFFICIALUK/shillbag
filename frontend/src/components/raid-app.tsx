@@ -340,7 +340,7 @@ export const RaidApp = () => {
           </div>
         ) : (
           <p className="mt-4 text-[14px] text-mute">
-            Sign so we can mark your ${TOKEN_SYMBOL} and lock a shiller rank.
+            Sign so we can mark your ${TOKEN_SYMBOL} and lock a shiller.
           </p>
         )}
         {isConnected && !holdingsApproved ? (
@@ -379,7 +379,7 @@ export const RaidApp = () => {
       <Receipt className="mt-5">
         <h2 className="eyebrow !text-mute">04 · Scan</h2>
         <p className="mt-4 text-[14px] text-mute">
-          One request. Lookback capped by rank. Original posts only.
+          One request. Lookback capped by shiller. Original posts only.
         </p>
         <button
           type="button"
@@ -391,7 +391,7 @@ export const RaidApp = () => {
         </button>
         {!canScan && holdingsApproved ? (
           <p className="mt-3 text-[12px] text-faint">
-            Need a rank, linked X, and a follow of @{X_HANDLE}.
+            Need a shiller, linked X, and a follow of @{X_HANDLE}.
           </p>
         ) : null}
       </Receipt>

@@ -14,7 +14,7 @@ export const SiteNav = () => (
           Coins
         </Link>
         <Link href="/ranks" className="hover:text-slip">
-          Ranks
+          Shillers
         </Link>
         <Link href="/rules" className="hover:text-slip">
           Rules

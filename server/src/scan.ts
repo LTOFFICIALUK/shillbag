@@ -102,7 +102,7 @@ export const runScan = async (input: {
       ),
       posts: [],
       skipped: [],
-      gate: `Cooldown. Next raid in ${waitMin} min. Ranks pace X reads.`,
+      gate: `Cooldown. Next raid in ${waitMin} min. Shillers pace X reads.`,
     };
   }
 
