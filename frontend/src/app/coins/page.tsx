@@ -6,11 +6,11 @@ import { TOKEN_SYMBOL } from "@/lib/config";
 
 export default function CoinsPage() {
   return (
-    <div>
+    <div className="flex min-h-dvh flex-col">
       <SiteNav />
-      <main className="mx-auto w-full max-w-3xl px-4 py-16">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-16">
         <p className="eyebrow">No allowlist</p>
-        <h1 className="display mt-4 text-5xl text-slip sm:text-7xl">Coins</h1>
+        <h1 className="display mt-4 text-5xl text-ink sm:text-7xl">Coins</h1>
         <Receipt className="mt-8">
           <p className="text-[15px] leading-7 text-mute">
             We pay the Solana mint in the tweet, not a curated ticker list.

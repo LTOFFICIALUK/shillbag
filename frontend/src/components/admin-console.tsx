@@ -81,25 +81,25 @@ export const AdminConsole = () => {
   if (!authedEmail) {
     return (
       <main className="mx-auto max-w-md px-4 py-24">
-        <h1 className="display text-4xl text-slip">Ops</h1>
+        <h1 className="display text-4xl text-ink">Ops</h1>
         <form onSubmit={(event) => void handleLogin(event)} className="mt-8 grid gap-4">
-          <label className="grid gap-2 text-[12px] uppercase tracking-[0.14em] text-faint">
+          <label className="grid gap-2 text-[12px] font-semibold uppercase tracking-[0.08em] text-faint">
             Email
             <input
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="border border-white/15 bg-night-2 px-3 py-2 text-slip"
+              className="rounded-2xl border border-line bg-white px-3 py-3 text-ink"
               type="email"
               autoComplete="username"
               required
             />
           </label>
-          <label className="grid gap-2 text-[12px] uppercase tracking-[0.14em] text-faint">
+          <label className="grid gap-2 text-[12px] font-semibold uppercase tracking-[0.08em] text-faint">
             Code
             <input
               value={code}
               onChange={(event) => setCode(event.target.value)}
-              className="border border-white/15 bg-night-2 px-3 py-2 text-slip"
+              className="rounded-2xl border border-line bg-white px-3 py-3 text-ink"
               type="password"
               autoComplete="current-password"
               required
@@ -109,7 +109,7 @@ export const AdminConsole = () => {
             {busy ? "Checking…" : "Enter"}
           </button>
         </form>
-        {status ? <p className="mt-4 text-[14px] text-faint">{status}</p> : null}
+        {status ? <p className="mt-4 text-[14px] text-mute">{status}</p> : null}
       </main>
     );
   }
@@ -117,7 +117,7 @@ export const AdminConsole = () => {
   return (
     <main className="mx-auto max-w-5xl px-4 py-16">
       <div className="flex items-center justify-between">
-        <h1 className="display text-4xl text-slip">Ops</h1>
+        <h1 className="display text-4xl text-ink">Ops</h1>
         <button type="button" onClick={() => void handleLogout()} className="btn-ghost">
           Out
         </button>
@@ -131,13 +131,13 @@ export const AdminConsole = () => {
               ["Raids", String(stats.scans)],
               ["Paid", formatUsd(stats.paidUsd)],
             ].map(([label, value]) => (
-              <article key={label} className="border border-white/10 bg-night-2 p-4">
-                <p className="font-mono text-[11px] uppercase text-faint">{label}</p>
-                <p className="mt-2 text-2xl">{value}</p>
+              <article key={label} className="rounded-[20px] border border-line bg-white p-4">
+                <p className="text-[11px] font-semibold uppercase text-faint">{label}</p>
+                <p className="mt-2 text-2xl font-semibold">{value}</p>
               </article>
             ))}
           </div>
-          <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
+          <ul className="mt-8 divide-y divide-line overflow-hidden rounded-[24px] border border-line bg-white px-4">
             {stats.recentClaims.map((claim) => (
               <li key={claim.tweetId} className="flex justify-between py-3 text-[13px]">
                 <span>@{claim.username}</span>

@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --night: #0b0b0c;
-  --night-2: #141416;
-  --slip: #f3ead6;
-  --slip-deep: #e7dcc2;
-  --ink: #12110e;
-  --mute: #6f6a60;
-  --faint: #9a9488;
-  --paid: #157a4a;
-  --line: rgba(18, 17, 14, 0.14);
+  --page: #f4f4f4;
+  --white: #ffffff;
+  --elevated: #ffffff;
+  --ink: #111111;
+  --mute: #1111118c;
+  --faint: #11111166;
+  --line: #1111111a;
+  --accent: #d4fc50;
+  --accent-hover: #c4ef3c;
+  --accent-soft: #f3ffd4;
+  --accent-mid: #e5f99a;
+  --paid: #34c759;
+  --danger: #ff3b30;
+  --night: #0d0d0d;
+  --night-2: #161616;
 }
 
 @theme inline {
-  --color-night: var(--night);
-  --color-night-2: var(--night-2);
-  --color-slip: var(--slip);
-  --color-slip-deep: var(--slip-deep);
+  --color-page: var(--page);
+  --color-white: var(--white);
+  --color-elevated: var(--elevated);
   --color-ink: var(--ink);
   --color-mute: var(--mute);
   --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-mid: var(--accent-mid);
   --color-paid: var(--paid);
+  --color-danger: var(--danger);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-slip: var(--ink);
   --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
   --font-display: var(--font-display);
@@ -35,109 +49,94 @@ html {
 }
 
 body {
-  background: var(--night);
-  color: var(--slip);
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.018em;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  letter-spacing: 0;
 }
 
 ::selection {
-  background: var(--paid);
-  color: #fff;
+  background: var(--accent);
+  color: var(--ink);
 }
 
 .display {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 400;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
 }
 
 .receipt {
   position: relative;
-  background: var(--slip);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--white);
   color: var(--ink);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
-}
-
-.receipt::before,
-.receipt::after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background-image: radial-gradient(circle, var(--night) 6px, transparent 7px);
-  background-size: 14px 12px;
-  background-repeat: repeat-x;
-  content: "";
-  pointer-events: none;
-}
-
-.receipt::before {
-  top: -6px;
-}
-
-.receipt::after {
-  bottom: -6px;
+  box-shadow:
+    0 1px 2px #1111110a,
+    0 8px 24px #1111110f;
 }
 
 .receipt-rule {
   height: 1px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--ink) 0 4px,
-    transparent 4px 8px
-  );
-  opacity: 0.28;
+  background: var(--line);
 }
 
 .stamp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--paid);
-  color: var(--paid);
-  font-family: var(--font-display), Georgia, serif;
-  letter-spacing: 0.08em;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  transform: rotate(-8deg);
 }
 
 .btn-primary,
-.btn-ghost {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.1rem;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  transition: transform 140ms ease, background-color 140ms ease;
-}
-
-.btn-primary {
-  background: var(--slip);
-  color: var(--ink);
-}
-
-.btn-ghost {
-  border: 1px solid rgba(243, 234, 214, 0.28);
-  color: var(--slip);
-}
-
+.btn-ghost,
 .btn-ink {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  background: var(--ink);
-  color: var(--slip);
-  padding: 0.7rem 1.1rem;
-  font-size: 13px;
+  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0;
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
-.btn-primary:hover,
+.btn-primary {
+  background: var(--accent);
+  color: var(--ink);
+  box-shadow: 0 8px 24px #d4fc5059;
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.btn-ink {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
 .btn-ghost:hover,
 .btn-ink:hover {
   transform: translateY(-1px);
@@ -149,7 +148,7 @@ body {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--slip);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
@@ -159,15 +158,24 @@ input:focus-visible {
   cursor: not-allowed;
   opacity: 0.4;
   transform: none;
+  box-shadow: none;
 }
 
 .eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px #d4fc5033;
 }
 
 .marquee {
@@ -177,23 +185,39 @@ input:focus-visible {
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes print-out {
-  from { transform: translateY(-12px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .print-out {
-  animation: print-out 420ms ease both;
+  animation: print-out 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes scan-print {
-  0% { transform: translateY(-8px); opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { transform: translateY(8px); opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
 }
 
 .scan-print {
@@ -201,7 +225,9 @@ input:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee, .print-out, .scan-print {
+  .marquee,
+  .print-out,
+  .scan-print {
     animation: none;
   }
 }

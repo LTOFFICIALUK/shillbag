@@ -6,10 +6,10 @@ import { TOKEN_SYMBOL, X_HANDLE } from "@/lib/config";
 
 export default function RulesPage() {
   return (
-    <div>
+    <div className="flex min-h-dvh flex-col">
       <SiteNav />
-      <main className="mx-auto w-full max-w-3xl px-4 py-16">
-        <h1 className="display text-5xl text-slip">Rules</h1>
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-16">
+        <h1 className="display text-5xl text-ink">Rules</h1>
         <Receipt className="mt-8">
           <ul className="space-y-4 text-[15px] leading-7 text-mute">
             <li>Original posts only. Retweets are not payable.</li>

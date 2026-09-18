@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div>
+    <div className="flex min-h-dvh flex-col">
       <SiteNav />
-      <main className="mx-auto w-full max-w-3xl px-4 py-16">
-        <h1 className="display text-5xl text-slip">Privacy</h1>
-        <div className="mt-8 space-y-5 text-[14px] leading-7 text-faint">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-16">
+        <h1 className="display text-5xl text-ink">Privacy</h1>
+        <div className="mt-8 space-y-5 rounded-[24px] border border-line bg-white p-6 text-[14px] leading-7 text-mute">
           <p>
             You start the scan. We do not watch X in the background. We do not
             hold your keys.

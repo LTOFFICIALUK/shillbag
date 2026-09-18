@@ -11,42 +11,26 @@ export default function Icon() {
           width: 64,
           height: 64,
           display: "flex",
-          background: "#f3ead6",
-          borderRadius: 10,
+          background: "#111111",
+          borderRadius: 18,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <svg width="64" height="64" viewBox="0 0 64 64">
           <path
-            d="M21 23.5h22L41 45.2q-1.7 2.6-3.4 0q-1.7 2.6-3.4 0q-1.7 2.6-3.4 0q-1.7 2.6-3.4 0q-1.7 2.6-3.4 0L21 23.5Z"
+            d="M21 24h22l-2 20.2q-1.7 2.4-3.4 0q-1.7 2.4-3.4 0q-1.7 2.4-3.4 0q-1.7 2.4-3.4 0q-1.7 2.4-3.4 0L21 24Z"
             fill="none"
-            stroke="#12110e"
-            strokeWidth="2.15"
+            stroke="#d4fc50"
+            strokeWidth="2.2"
             strokeLinejoin="round"
           />
           <path
-            d="M27.2 23.5c0-5.6 9.6-5.6 9.6 0"
+            d="M27.2 24c0-5.4 9.6-5.4 9.6 0"
             fill="none"
-            stroke="#12110e"
-            strokeWidth="2.15"
+            stroke="#d4fc50"
+            strokeWidth="2.2"
             strokeLinecap="round"
-          />
-          <circle
-            cx="46.2"
-            cy="46.4"
-            r="10.4"
-            fill="#f3ead6"
-            stroke="#157a4a"
-            strokeWidth="2.05"
-          />
-          <path
-            d="m42 46.6 3.05 3.1 6.35-7.15"
-            fill="none"
-            stroke="#157a4a"
-            strokeWidth="2.05"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           />
         </svg>
       </div>

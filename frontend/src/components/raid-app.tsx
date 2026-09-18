@@ -255,21 +255,24 @@ export const RaidApp = () => {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-12">
-      <p className="eyebrow">Phantom · bag · X · scan</p>
-      <h1 className="display mt-4 text-5xl text-slip sm:text-6xl">Scan profile</h1>
-      <p className="mt-4 max-w-lg text-[15px] leading-7 text-faint">
+      <p className="eyebrow inline-flex items-center gap-2">
+        <span className="live-dot" aria-hidden="true" />
+        Phantom · bag · X · scan
+      </p>
+      <h1 className="display mt-4 text-5xl text-ink sm:text-6xl">Scan profile</h1>
+      <p className="mt-4 max-w-lg text-[15px] leading-7 text-mute">
         Prove ${TOKEN_SYMBOL}. Hook X. We print a receipt in the memecoin you
         tagged.
       </p>
 
-      <ol className="mt-8 grid grid-cols-4 gap-2 text-[10px] uppercase tracking-[0.12em] text-faint">
+      <ol className="mt-8 grid grid-cols-4 gap-2 text-[11px] font-medium text-faint">
         {["Wallet", "Bag", "X", "Scan"].map((label, index) => (
           <li
             key={label}
             aria-current={step === index + 1 ? "step" : undefined}
             className={cn(
-              "border-b pb-2",
-              step >= index + 1 ? "border-slip text-slip" : "border-white/12",
+              "rounded-full px-2 py-2 text-center",
+              step >= index + 1 ? "bg-accent text-ink" : "bg-white text-faint",
             )}
           >
             0{index + 1} {label}
@@ -290,7 +293,7 @@ export const RaidApp = () => {
           <button
             type="button"
             onClick={() => void handleDisconnectPhantom()}
-            className="btn-ghost mt-6 !border-ink/20 !text-ink"
+            className="btn-ghost mt-6"
             aria-label="Disconnect Phantom"
           >
             Disconnect
@@ -404,14 +407,14 @@ export const RaidApp = () => {
 
       {phase === "scanning" ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-night/88 px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-4 backdrop-blur-sm"
           role="alertdialog"
           aria-label="Scanning profile"
         >
           <Receipt className="w-full max-w-sm text-center">
             <p className="scan-print display text-4xl">Scanning</p>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-mute">
-              printing the timeline
+            <p className="mt-3 text-[12px] font-medium uppercase tracking-[0.14em] text-mute">
+              reading the timeline
             </p>
           </Receipt>
         </div>
@@ -420,14 +423,12 @@ export const RaidApp = () => {
       {phase === "paid" && scan ? (
         <Receipt className="print-out mt-10" aria-live="polite">
           <div className="flex items-start justify-between">
-            <BagMark className="h-10 w-10" inverted />
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-mute">
-              SHILLBAG / RAID
-            </p>
+            <BagMark className="h-10 w-10" />
+            <p className="text-[12px] font-medium text-mute">shillbag / raid</p>
           </div>
           {loot ? (
             <>
-              <p className="stamp mt-8 h-14 w-28 text-xl">Paid.</p>
+              <p className="stamp mt-8 h-9 px-4">Paid</p>
               <p className="display mt-6 text-4xl leading-[0.95] sm:text-5xl">
                 You got paid {formatUsd(loot.first.payoutUsd)} in ${loot.first.asset.symbol}
               </p>

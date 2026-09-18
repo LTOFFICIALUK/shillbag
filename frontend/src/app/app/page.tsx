@@ -4,9 +4,9 @@ import { SiteNav } from "@/components/site-nav";
 
 export default function AppPage() {
   return (
-    <div>
+    <div className="flex min-h-dvh flex-col">
       <SiteNav />
-      <main>
+      <main className="flex-1">
         <RaidApp />
       </main>
       <SiteFooter />

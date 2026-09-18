@@ -16,18 +16,21 @@ const payments = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex min-h-dvh flex-col">
       <SiteNav />
-      <main>
-        <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-20 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pt-16">
+      <main className="flex-1">
+        <section className="mx-auto grid w-full max-w-[1080px] items-center gap-10 px-4 pb-16 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:pt-14">
           <div>
-            <p className="eyebrow">Solana · X · receipts</p>
-            <h1 className="display mt-5 max-w-xl text-[52px] leading-[0.92] text-slip sm:text-[76px]">
+            <p className="eyebrow inline-flex items-center gap-2">
+              <span className="live-dot" aria-hidden="true" />
+              family · scan · pay
+            </p>
+            <h1 className="display mt-5 max-w-xl text-[56px] leading-[0.92] text-ink sm:text-[80px]">
               Tag the coin.
               <br />
               Get paid in it.
             </h1>
-            <p className="mt-6 max-w-md text-[16px] leading-7 text-faint">
+            <p className="mt-6 max-w-md text-[16px] leading-7 text-mute">
               Scan your profile. We pay the Solana mint in the post, not a
               ticker list. Fresh launches often have no CA on X yet — those
               posts are skipped. Pending never reads as paid.
@@ -45,39 +48,35 @@ export default function Home() {
             </p>
           </div>
 
-          <Receipt rotate={-1.5} className="print-out max-w-md justify-self-center lg:justify-self-end">
+          <Receipt className="print-out max-w-md justify-self-center lg:justify-self-end">
             <div className="flex items-start justify-between">
-              <BagMark className="h-10 w-10" inverted />
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mute">
-                SHILLBAG / 0041
-              </p>
+              <BagMark className="h-10 w-10" />
+              <p className="text-[12px] font-medium text-mute">shillbag / 0041</p>
             </div>
-            <p className="mt-8 text-[13px] leading-6 text-mute">
+            <p className="mt-8 text-[14px] leading-6 text-mute">
               @degen tagged $BONK. 214 likes. Original post.
             </p>
             <ReceiptRule />
-            <p className="eyebrow !text-mute">Status</p>
-            <p className="stamp mt-3 h-14 w-28 text-xl">Paid.</p>
+            <p className="eyebrow">Status</p>
+            <p className="stamp mt-3 h-9 px-4">Paid</p>
             <p className="display mt-6 text-4xl leading-none">$2.14 in $BONK</p>
-            <p className="mt-3 font-mono text-[11px] text-mute">
-              and $0.86 in $WIF
-            </p>
+            <p className="mt-3 text-[14px] text-mute">and $0.86 in $WIF</p>
             <ReceiptRule />
-            <p className="font-mono text-[11px] text-mute">
-              Phantom · Solana · not a promise
-            </p>
+            <p className="text-[12px] text-faint">Phantom · Solana · not a promise</p>
           </Receipt>
         </section>
 
-        <div className="overflow-hidden border-y border-white/8 bg-night-2 py-3">
-          <div className="marquee gap-10 pr-10 font-mono text-[12px] text-faint">
+        <div className="mx-4 overflow-hidden rounded-[24px] border border-line bg-white py-3">
+          <div className="marquee gap-10 pr-10 text-[13px] text-mute">
             {[0, 1].map((copy) => (
               <div key={copy} className="flex shrink-0 gap-10">
                 {payments.map((item) => (
                   <span key={`${copy}-${item.time}-${item.ticker}`}>
                     {item.usd} sent in ${item.ticker}
-                    <span className="ml-3 text-paid">Paid.</span>
-                    <span className="ml-3">{item.time}</span>
+                    <span className="ml-3 rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-ink">
+                      Paid
+                    </span>
+                    <span className="ml-3 text-faint">{item.time}</span>
                   </span>
                 ))}
               </div>
@@ -85,12 +84,12 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="mx-auto w-full max-w-6xl px-4 py-20">
+        <section className="mx-auto w-full max-w-[1080px] px-4 py-16">
           <p className="eyebrow">Three beats</p>
-          <h2 className="display mt-3 max-w-xl text-4xl text-slip sm:text-5xl">
+          <h2 className="display mt-3 max-w-xl text-4xl text-ink sm:text-5xl">
             Proof that looks like payment.
           </h2>
-          <ol className="mt-12 grid gap-6 md:grid-cols-3">
+          <ol className="mt-10 grid gap-4 md:grid-cols-3">
             {[
               {
                 n: "01",
@@ -105,47 +104,51 @@ export default function Home() {
               {
                 n: "03",
                 t: "Print the slip",
-                d: "Scan once. Tagged memes pay in that meme. The receipt only says Paid after the transfer.",
+                d: "Scan once. Tagged memes pay in that meme. Paid only after the transfer.",
               },
             ].map((step) => (
-              <li key={step.n} className="border-t border-white/12 pt-5">
-                <p className="font-mono text-[11px] text-faint">{step.n}</p>
-                <h3 className="mt-3 text-[17px] text-slip">{step.t}</h3>
-                <p className="mt-2 text-[14px] leading-6 text-faint">{step.d}</p>
+              <li key={step.n} className="rounded-[24px] border border-line bg-white p-6">
+                <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent text-[12px] font-semibold">
+                  {step.n}
+                </p>
+                <h3 className="mt-4 text-[17px] font-semibold text-ink">{step.t}</h3>
+                <p className="mt-2 text-[14px] leading-6 text-mute">{step.d}</p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="bg-night-2 py-16">
-          <div className="mx-auto w-full max-w-6xl px-4">
+        <section className="px-4">
+          <div className="mx-auto w-full max-w-[1080px] rounded-[28px] bg-night px-6 py-14 text-white sm:px-10">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">Any Solana mint</p>
+                <p className="eyebrow !text-white/50">Any Solana mint</p>
                 <h2 className="display mt-2 max-w-2xl text-4xl">
                   No CA on the tweet is not a miss. New coins often have none yet.
                 </h2>
               </div>
-              <Link href="/coins" className="text-[13px] text-faint hover:text-slip">
+              <Link
+                href="/coins"
+                className="text-[13px] text-white/60 hover:text-white"
+                tabIndex={0}
+              >
                 How we read CAs
               </Link>
             </div>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
-              <p className="max-w-xl text-[15px] leading-7 text-faint">
+              <p className="max-w-xl text-[15px] leading-7 text-white/70">
                 X has to bind a cashtag to a mint before we see
                 solana:&lt;mint&gt;. Brand-new tokens usually show as a bare
                 $TICKER with no contract. We skip those on purpose so the twenty
                 copycats of the same name do not get paid. That is the product
                 working, not an unpaid shill.
               </p>
-              <ul className="space-y-3 text-[14px] leading-6 text-faint">
+              <ul className="space-y-3 text-[14px] leading-6 text-white/70">
                 <li>
                   Pays: X maps the cashtag to Solana, or the post has a
                   pump.fun, axiom, dexscreener, birdeye, or solscan token link.
                 </li>
-                <li>
-                  Skipped: $TICKER only, no mint. Copycats share names.
-                </li>
+                <li>Skipped: $TICKER only, no mint. Copycats share names.</li>
                 <li>
                   Receipts only say Paid after the SPL transfer. A skip is not a
                   pending payout.
@@ -155,36 +158,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-4 py-20">
+        <section className="mx-auto w-full max-w-[1080px] px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="display text-4xl">The shillers</h2>
-            <Link href="/ranks" className="text-[13px] text-faint hover:text-slip">
+            <Link href="/ranks" className="text-[13px] text-mute hover:text-ink" tabIndex={0}>
               Open the ladder
             </Link>
           </div>
-          <div className="mt-8 overflow-x-auto">
+          <div className="mt-8 overflow-hidden rounded-[24px] border border-line bg-white">
             <table className="w-full min-w-[640px] text-left text-[13px]">
               <thead>
-                <tr className="font-mono text-[11px] uppercase tracking-[0.12em] text-faint">
-                  <th className="pb-3 font-normal">Shiller</th>
-                  <th className="pb-3 font-normal">Hold</th>
-                  <th className="pb-3 font-normal">Lookback</th>
-                  <th className="pb-3 font-normal">Bagback</th>
-                  <th className="pb-3 font-normal">Day cap</th>
+                <tr className="text-[12px] font-semibold uppercase tracking-[0.08em] text-faint">
+                  <th className="px-5 pb-3 pt-4 font-semibold">Shiller</th>
+                  <th className="px-5 pb-3 pt-4 font-semibold">Hold</th>
+                  <th className="px-5 pb-3 pt-4 font-semibold">Lookback</th>
+                  <th className="px-5 pb-3 pt-4 font-semibold">Bagback</th>
+                  <th className="px-5 pb-3 pt-4 font-semibold">Day cap</th>
                 </tr>
               </thead>
               <tbody>
                 {TIERS.map((tier) => (
-                  <tr key={tier.id} className="border-t border-white/8">
-                    <td className="py-3.5 text-slip">{tier.name}</td>
-                    <td className="py-3.5 font-mono text-faint">
+                  <tr key={tier.id} className="border-t border-line">
+                    <td className="px-5 py-3.5 font-medium text-ink">{tier.name}</td>
+                    <td className="px-5 py-3.5 font-mono text-mute">
                       ${tier.minHoldUsd.toLocaleString()}
                     </td>
-                    <td className="py-3.5 text-faint">{tier.lookbackLabel}</td>
-                    <td className="py-3.5 font-mono text-faint">
+                    <td className="px-5 py-3.5 text-mute">{tier.lookbackLabel}</td>
+                    <td className="px-5 py-3.5 font-mono text-mute">
                       {bagbackPercent(tier)}%
                     </td>
-                    <td className="py-3.5 font-mono text-faint">${tier.dailyCapUsd}</td>
+                    <td className="px-5 py-3.5 font-mono text-mute">${tier.dailyCapUsd}</td>
                   </tr>
                 ))}
               </tbody>
@@ -192,28 +195,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-4 pb-10">
+        <section className="mx-auto w-full max-w-[1080px] px-4 pb-8">
           <p className="eyebrow">Recent slips</p>
-          <ul className="mt-6 divide-y divide-white/8 border-y border-white/8">
+          <ul className="mt-5 overflow-hidden rounded-[24px] border border-line bg-white">
             {payments.map((item) => (
               <li
                 key={item.who + item.time}
-                className="flex flex-wrap items-baseline justify-between gap-3 py-4 text-[14px]"
+                className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 text-[14px] last:border-b-0"
               >
-                <span className="text-slip">
+                <span className="flex items-center gap-3 font-medium text-ink">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-soft text-[10px] font-semibold">
+                    ${item.ticker.slice(0, 2)}
+                  </span>
                   {item.usd} in ${item.ticker}
                 </span>
                 <span className="font-mono text-[12px] text-faint">
-                  {item.who} · {item.time} · Paid.
+                  {item.who} · {item.time} · Paid
                 </span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-4 pb-24">
+        <section className="mx-auto w-full max-w-[1080px] px-4 pb-16">
           <Receipt className="px-8 py-16 text-center">
-            <BagMark className="mx-auto h-14 w-14" inverted />
+            <BagMark className="mx-auto h-14 w-14" />
             <h2 className="display mx-auto mt-8 max-w-2xl text-4xl sm:text-5xl">
               Your timeline already did the shill.
             </h2>
