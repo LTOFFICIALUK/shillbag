@@ -62,7 +62,7 @@ export default function Home() {
             </div>
 
             <div className="relative mx-auto w-full max-w-md lg:justify-self-end">
-              <div className="float-slow absolute -left-5 top-12 z-10 hidden rounded-2xl border border-white/80 bg-white/80 px-4 py-3 shadow-[0_14px_40px_#1111111a] backdrop-blur-xl sm:block">
+              <div className="float-slow absolute -left-28 top-12 z-10 hidden rounded-2xl border border-white/80 bg-white/80 px-4 py-3 shadow-[0_14px_40px_#1111111a] backdrop-blur-xl sm:block">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-faint">
                   Just landed
                 </p>
@@ -76,7 +76,7 @@ export default function Home() {
               </div>
               <Receipt className="hero-receipt print-out w-full">
                 <div className="flex items-start justify-between">
-                  <BagMark className="h-10 w-10" />
+                  <BagMark className="relative z-20 h-10 w-10" />
                   <p className="text-[12px] font-medium text-mute">shillbag / 0041</p>
                 </div>
                 <p className="mt-8 text-[14px] leading-6 text-mute">
