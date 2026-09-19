@@ -50,7 +50,7 @@ export const demoTweets = (username: string, cutoff: number): TwtTweet[] => {
       tweet_id: `demo-${username}-old`,
       user_id: "demo",
       username,
-      text: `$PENGU was a vibe last week.`,
+      text: `that ticker was a vibe last week.`,
       created_at: within(40),
       reply_count: 4,
       retweet_count: 2,

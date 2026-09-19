@@ -3,18 +3,17 @@ import { BagMark } from "@/components/bag-mark";
 import { Receipt, ReceiptRule } from "@/components/receipt";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
+import { TokenMark } from "@/components/token-mark";
 import { TOKEN_ADDRESS, TOKEN_SYMBOL } from "@/lib/config";
 import { TIERS, bagbackPercent } from "@/lib/tiers";
+import { fetchTrending, tapeItems } from "@/lib/trending";
 
-const payments = [
-  { usd: "$2.14", ticker: "BONK", who: "7nK2…pQ4x", time: "2m" },
-  { usd: "$1.08", ticker: "WIF", who: "9fLm…3bR7", time: "6m" },
-  { usd: "$0.86", ticker: "PENGU", who: "4cWp…8sD1", time: "11m" },
-  { usd: "$0.40", ticker: TOKEN_SYMBOL, who: "2hQa…6kN9", time: "18m" },
-  { usd: "$5.00", ticker: "FARTCOIN", who: "8tVe…1mC5", time: "31m" },
-];
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const payments = tapeItems(await fetchTrending());
+  const lead = payments[0];
+  const follow = payments[1];
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteNav />
@@ -26,7 +25,7 @@ export default function Home() {
             <div className="relative z-10">
               <p className="eyebrow inline-flex items-center gap-2">
                 <span className="live-dot" aria-hidden="true" />
-                Live payouts on Solana
+                Live tape · Robinhood Chain + Solana
               </p>
               <h1 className="display mt-5 max-w-xl text-[60px] leading-[0.88] text-ink sm:text-[88px]">
                 Tag the coin.
@@ -66,7 +65,9 @@ export default function Home() {
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-faint">
                   Just landed
                 </p>
-                <p className="mt-1 text-[13px] font-semibold">+$2.14 · $BONK</p>
+                <p className="mt-1 text-[13px] font-semibold">
+                  +{lead?.usd ?? "$1.00"} · ${lead?.ticker ?? TOKEN_SYMBOL}
+                </p>
               </div>
               <div className="float-delayed absolute -bottom-4 -right-4 z-10 hidden items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2.5 text-[12px] font-semibold shadow-[0_14px_40px_#1111111a] backdrop-blur-xl sm:flex">
                 <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent" aria-hidden="true">
@@ -76,19 +77,34 @@ export default function Home() {
               </div>
               <Receipt className="hero-receipt print-out w-full">
                 <div className="flex items-start justify-between">
-                  <BagMark className="relative z-20 h-10 w-10" />
-                  <p className="text-[12px] font-medium text-mute">shillbag / 0041</p>
+                  <TokenMark
+                    symbol={lead?.ticker ?? TOKEN_SYMBOL}
+                    imageUrl={lead?.imageUrl}
+                    className="relative z-20 h-10 w-10"
+                  />
+                  <p className="text-[12px] font-medium text-mute">
+                    shillbag / {lead?.chainId ?? "live"}
+                  </p>
                 </div>
                 <p className="mt-8 text-[14px] leading-6 text-mute">
-                  @degen tagged $BONK. 214 likes. Original post.
+                  @degen tagged ${lead?.ticker ?? TOKEN_SYMBOL}. 214 likes.
+                  Original post.
                 </p>
                 <ReceiptRule />
                 <p className="eyebrow">Status</p>
                 <p className="stamp mt-3 h-9 px-4">Paid</p>
-                <p className="display mt-6 text-4xl leading-none">$2.14 in $BONK</p>
-                <p className="mt-3 text-[14px] text-mute">and $0.86 in $WIF</p>
+                <p className="display mt-6 text-4xl leading-none">
+                  {lead?.usd ?? "$1.00"} in ${lead?.ticker ?? TOKEN_SYMBOL}
+                </p>
+                {follow ? (
+                  <p className="mt-3 text-[14px] text-mute">
+                    and {follow.usd} in ${follow.ticker}
+                  </p>
+                ) : null}
                 <ReceiptRule />
-                <p className="text-[12px] text-faint">Phantom · Solana · not a promise</p>
+                <p className="text-[12px] text-faint">
+                  DexScreener cache · not a promise
+                </p>
               </Receipt>
             </div>
           </div>
@@ -104,7 +120,10 @@ export default function Home() {
                     <span className="ml-3 rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-ink">
                       Paid
                     </span>
-                    <span className="ml-3 text-faint">{item.time}</span>
+                    <span className="ml-3 text-faint">
+                      {item.time}
+                      {item.chainId ? ` · ${item.chainId}` : ""}
+                    </span>
                   </span>
                 ))}
               </div>
@@ -226,17 +245,19 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-[1080px] px-4 pb-8">
-          <p className="eyebrow">Recent slips</p>
+          <p className="eyebrow">What is getting talked about</p>
           <ul className="mt-5 overflow-hidden rounded-[24px] border border-line bg-white">
             {payments.map((item) => (
               <li
-                key={item.who + item.time}
+                key={item.who + item.time + item.ticker}
                 className="group flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 text-[14px] transition-colors last:border-b-0 hover:bg-accent-soft/50"
               >
                 <span className="flex items-center gap-3 font-medium text-ink">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-soft text-[10px] font-semibold transition-transform duration-300 group-hover:scale-110">
-                    ${item.ticker.slice(0, 2)}
-                  </span>
+                  <TokenMark
+                    symbol={item.ticker}
+                    imageUrl={item.imageUrl}
+                    className="h-8 w-8 transition-transform duration-300 group-hover:scale-110"
+                  />
                   {item.usd} in ${item.ticker}
                 </span>
                 <span className="font-mono text-[12px] text-faint">

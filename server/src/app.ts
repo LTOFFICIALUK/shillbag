@@ -36,6 +36,7 @@ import {
   readAdminEmail,
   verifyAdminLogin,
 } from "./admin";
+import { getTrending } from "./trending";
 
 const allowedOrigins = (
   process.env.FRONTEND_ORIGIN ?? "http://localhost:3000"
@@ -225,6 +226,12 @@ app.post("/api/scan", async (c) => {
 app.get("/api/payouts", async (c) => {
   const payouts = await recentPayouts(10);
   return c.json({ payouts });
+});
+
+app.get("/api/trending", async (c) => {
+  const trending = await getTrending();
+  c.header("Cache-Control", "public, max-age=30, stale-while-revalidate=120");
+  return c.json(trending);
 });
 
 app.post("/api/admin/login", async (c) => {
